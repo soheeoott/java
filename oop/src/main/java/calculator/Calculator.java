@@ -13,21 +13,20 @@ public class Calculator {
         int result = Integer.parseInt(numArr[0]);
 
         for (int i = 1; i < numArr.length; i += 2) {
-
             int num = Integer.parseInt(numArr[i + 1]);
 
             switch (numArr[i]) {
                 case "+":
-                    result += num;
+                    result = Addition.plus(result, num);
                     break;
                 case "-":
-                    result -= num;
+                    result = Subtraction.minus(result, num);
                     break;
                 case "/":
-                    result /= num;
+                    result = Division.div(result, num);
                     break;
                 case "*":
-                    result *= num;
+                    result = Multiplication.mul(result, num);
                     break;
             }
         }
