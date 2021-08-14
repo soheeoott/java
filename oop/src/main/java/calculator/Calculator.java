@@ -6,8 +6,8 @@ public class Calculator {
 
     public static int calculation(String[] arr, int result) {
 
-        for (int i = 1; i < arr.length; i += 2) {
-            int num = Integer.parseInt(arr[i + 1]);
+        for (int i = 1; i < arr.length; i += 2) {   // 홀수 : 연산자
+            int num = Integer.parseInt(arr[i + 1]); // 짝수 : 숫자
 
             switch (arr[i]) {
                 case "+":
