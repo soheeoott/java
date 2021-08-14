@@ -35,22 +35,30 @@ public class Calculator {
 
             // 덧셈
             if(plus != -1) {
-                result += Addition.addition(plus-1, plus+1);
+                int operand1 = Integer.parseInt(operand[plus-1]);
+                int operand2 = Integer.parseInt(operand[plus+1]);
+                result += Addition.addition(operand1, operand2);
             }
 
             // 뺄셈
             if(minus != -1) {
-                result += Subtraction.subtraction(minus-1, minus+1);
+                int operand1 = Integer.parseInt(operand[minus-1]);
+                int operand2 = Integer.parseInt(operand[minus+1]);
+                result += Subtraction.subtraction(operand1, operand2);
             }
 
             // 곱셈
             if(mul != -1) {
-                result += Multiplication.multiplication(mul-1, mul+1);
+                int operand1 = Integer.parseInt(operand[mul-1]);
+                int operand2 = Integer.parseInt(operand[mul+1]);
+                result += Multiplication.multiplication(operand1, operand2);
             }
 
             // 나눗셈
             if(div != -1) {
-                result += Division.division(div-1, div+1);
+                int operand1 = Integer.parseInt(operand[div-1]);
+                int operand2 = Integer.parseInt(operand[div+1]);
+                result += Division.division(operand1, operand2);
             }
         }
 
