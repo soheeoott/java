@@ -4,18 +4,12 @@ import java.io.*;
 
 public class Calculator {
 
-    public static void main(String[] args) throws Exception {
+    public static int calculation(String[] arr, int result) {
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        String[] numArr = br.readLine().split(" ");
+        for (int i = 1; i < arr.length; i += 2) {
+            int num = Integer.parseInt(arr[i + 1]);
 
-        int result = Integer.parseInt(numArr[0]);
-
-        for (int i = 1; i < numArr.length; i += 2) {
-            int num = Integer.parseInt(numArr[i + 1]);
-
-            switch (numArr[i]) {
+            switch (arr[i]) {
                 case "+":
                     result = Addition.plus(result, num);
                     break;
@@ -30,6 +24,18 @@ public class Calculator {
                     break;
             }
         }
+        return result;
+    }
+
+    public static void main(String[] args) throws Exception {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        String[] numArr = br.readLine().split(" ");
+
+        int result = Integer.parseInt(numArr[0]);
+        result = calculation(numArr, result);
+
         bw.write(String.valueOf(result));
         bw.flush();
         bw.close();
