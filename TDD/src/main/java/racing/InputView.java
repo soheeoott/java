@@ -17,19 +17,19 @@ public class InputView {
         inputTryCount(sc.nextInt());
     }
 
-    public void inputCarQuantity(int carQuantity) {
+    void inputCarQuantity(int carQuantity) {
         this.carQuantity = carQuantity;
     }
 
-    public void inputTryCount(int tryCount) {
+    void inputTryCount(int tryCount) {
         this.tryCount = tryCount;
     }
 
-    public int getCarQuantity() {
+    int getCarQuantity() {
         return carQuantity;
     }
 
-    public int getTryCount() {
+    int getTryCount() {
         return tryCount;
     }
 }
