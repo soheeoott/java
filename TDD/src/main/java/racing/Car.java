@@ -7,7 +7,7 @@ public class Car { // 의존관계 생각해보기 (외부에 어떻게 영향�
 
     public void forwardCheck(int randomNumber) {
 
-        if (randomNumber >= 4) { //  메소드 호출
+        if (position.forwardCondition(randomNumber)) { //  메소드 호출
             // 이동
             position.position++; // 값 객체로 변경
         }
@@ -26,4 +26,15 @@ class Position {
 
     public int position; // 이름 변경 필요
 
+    // 생성자에게 검증 코드 위임
+    public Position(int randomNumber) throws Exception {
+
+        if (randomNumber == -1 || randomNumber == 10) {
+            throw new Exception("입력 범위를 초과하였습니다.");
+        }
+    }
+
+    Boolean forwardCondition (int randomNumber) {
+        return randomNumber >= 4;
+    }
 }
