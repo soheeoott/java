@@ -29,8 +29,8 @@ class Position {
     // 생성자에게 검증 코드 위임
     public Position(int randomNumber) throws Exception {
 
-        if (randomNumber == -1 || randomNumber == 10) {
-            throw new Exception("입력 범위를 초과하였습니다.");
+        if (randomNumber < 0 || randomNumber == 10) {
+            throw new Exception("1~9까지의 숫자를 입력해주세요.");
         }
     }
 
