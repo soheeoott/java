@@ -11,17 +11,41 @@ public class InputView {
     private static final int INPUT_MIN_RANGE_NUMBER = 1;
     private static final int INPUT_MAX_RANGE_NUMBER = 9;
 
-    private Scanner scanner;
+    private static Scanner scanner;
 
-    public InputView(Scanner scanner) {
+    public InputView(Scanner scanner) throws Exception {
         this.scanner = scanner;
     }
 
-    Boolean setUpRacingInputCheck () {
-        return scanner.nextInt() < INPUT_MIN_RANGE_NUMBER || scanner.nextInt() > INPUT_MAX_RANGE_NUMBER;
+    Boolean setUpRacingInputCheck (int inputNumber) {
+        return inputNumber < INPUT_MIN_RANGE_NUMBER || inputNumber > INPUT_MAX_RANGE_NUMBER;
     }
 
-    // 문자로 입력 받았을 때 => InputMismatchException
+    public int setUpCarQuantity (Scanner scanner) throws Exception {
+        System.out.println(INPUT_MESSAGE_CAR_QUANTITY);
+
+        int carQuantity = scanner.nextInt();
+
+        if (setUpRacingInputCheck(carQuantity)) {
+            throw new Exception(ERROR_MESSAGE_INPUT_RANGE);
+        }
+        return carQuantity;
+    }
+
+    // 10회로 한정
+    public int setUpTryCount (Scanner scanner) throws Exception {
+        System.out.println(INPUT_MESSAGE_TRY_COUNT);
+
+        int tryCount = scanner.nextInt();
+
+        if (setUpRacingInputCheck(tryCount)) {
+            throw new Exception(ERROR_MESSAGE_INPUT_RANGE);
+        }
+        return tryCount;
+    }
+}
+
+// 문자로 입력 받았을 때 => InputMismatchException
 //    Boolean setUpRacingInputNumberCheck () {
 //        try {
 //            return scanner.nextInt(); // -> 문자인지 아닌지???? Character.digit() 사용?
@@ -29,23 +53,3 @@ public class InputView {
 //            System.out.println();
 //        }
 //    }
-
-    private int setUpCarQuantity () throws Exception {
-        System.out.println(INPUT_MESSAGE_CAR_QUANTITY);
-        
-        if (setUpRacingInputCheck()) {
-            throw new Exception(ERROR_MESSAGE_INPUT_RANGE);
-        }
-        return scanner.nextInt();
-    }
-
-    // 10회로 한정
-    private int setUpTryCount () throws Exception {
-        System.out.println(INPUT_MESSAGE_TRY_COUNT);
-
-        if (setUpRacingInputCheck()) {
-            throw new Exception(ERROR_MESSAGE_INPUT_RANGE);
-        }
-        return scanner.nextInt();
-    }
-}
