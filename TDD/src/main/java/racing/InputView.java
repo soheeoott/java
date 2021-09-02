@@ -8,40 +8,40 @@ public class InputView {
     private static final String INPUT_MESSAGE_TRY_COUNT = "시도할 회수는 몇 회 인가요?";
     private static final String ERROR_MESSAGE_INPUT_RANGE = "1부터 9까지 범위 이내의 숫자를 입력해주세요.";
 
-    private static final int INPUT_MIN_RANGE_NUMBER = 1;
-    private static final int INPUT_MAX_RANGE_NUMBER = 9;
+    private static final int MIN_RANGE = 0;
+    private static final int MAX_RANGE = 9;
 
-    private static Scanner scanner;
+    private static Scanner scanner = new Scanner(System.in);
+    private static RacingInformation racingInformation;
 
-    public InputView(Scanner scanner) throws Exception {
-        this.scanner = scanner;
-    }
-
-    Boolean setUpRacingInputCheck (int inputNumber) {
-        return inputNumber < INPUT_MIN_RANGE_NUMBER || inputNumber > INPUT_MAX_RANGE_NUMBER;
-    }
-
-    public int setUpCarQuantity (Scanner scanner) throws Exception {
+    public void setUpReady() {
         System.out.println(INPUT_MESSAGE_CAR_QUANTITY);
+        int carQuantity = setUpInput();
 
-        int carQuantity = scanner.nextInt();
+        System.out.println(INPUT_MESSAGE_TRY_COUNT);
+        int tryCount = setUpInput();
+        scanner.close();
 
-        if (setUpRacingInputCheck(carQuantity)) {
-            throw new Exception(ERROR_MESSAGE_INPUT_RANGE);
-        }
-        return carQuantity;
+        racingInformation = new RacingInformation(carQuantity, tryCount);
     }
 
-    // 10회로 한정
-    public int setUpTryCount (Scanner scanner) throws Exception {
-        System.out.println(INPUT_MESSAGE_TRY_COUNT);
+    private int setUpInput () {
+        int inputNumber = scanner.nextInt();
 
-        int tryCount = scanner.nextInt();
-
-        if (setUpRacingInputCheck(tryCount)) {
-            throw new Exception(ERROR_MESSAGE_INPUT_RANGE);
+        if (inputRangeCheck(inputNumber)) {
+            throw new IllegalStateException(ERROR_MESSAGE_INPUT_RANGE);
         }
-        return tryCount;
+        return inputNumber;
+    }
+
+    // 입력값 범위 체크
+    Boolean inputRangeCheck (int inputNumber) {
+        return inputNumber < MIN_RANGE || inputNumber > MAX_RANGE;
+    }
+
+    // 레이싱 정보 (자동차 대수, 시도 횟수)
+    public RacingInformation loadRacingInformation() {
+        return racingInformation;
     }
 }
 
