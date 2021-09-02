@@ -32,10 +32,11 @@ public class Car { // 의존관계 (외부에 어떻게 영향을 끼칠지)
             throw new IllegalArgumentException(ERROR_MESSAGE_INPUT_MOVE_RANGE);
         }
 
-        if (movedCondition(randomNumber)) { // 전진 조건 체크, 증가값을 어떻게 주지 = 위치를 복사
-//            return position = (loadPositionCurrent + 1); // 복사
+        if (movedCondition(randomNumber)) { // 전진 조건 체크
+            loadPositionCurrent += 1; // 야매 코드,,,,,,
+            return position = new Position(loadPositionCurrent);
         }
-        return new Position(loadPositionCurrent);
+        return position = new Position(loadPositionCurrent);
     }
 
     public Position loadPosition() {

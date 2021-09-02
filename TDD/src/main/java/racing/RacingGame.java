@@ -17,6 +17,7 @@ public class RacingGame {
     private static Position position;
     private static RandomGenerator randomGenerator;
 
+    private static final int LOOP_START = 0;
     private static int carQuantity;
     private static int tryCount;
 
@@ -32,7 +33,7 @@ public class RacingGame {
     }
 
     public static void start() {
-        System.out.println(cars.size());
+        System.out.println("실행 결과");
 
         // 반복문 (시도 횟수, 차 대수)
         loopTryCountStart(racingInformation.loadTryCount());
@@ -40,7 +41,7 @@ public class RacingGame {
 
     public static void loopTryCountStart(int tryCount) {
 
-        for (int i = 0; i < tryCount; i++) {
+        for (int i = LOOP_START; i < tryCount; i++) {
             loopCarQuantityStart(racingInformation.loadCars());
             System.out.println("");
         }
@@ -48,19 +49,31 @@ public class RacingGame {
 
     public static void loopCarQuantityStart(List<Car> cars) {
 
-        for (int i = 0; i < cars.size(); i++) {
+        for (int i = LOOP_START; i < cars.size(); i++) {
 
             randomGenerator = new RandomGenerator();
             int randomNumber = randomGenerator.randomNumber();
 
             // 자동차가 위치를 변경
             position = cars.get(i).forwardCondition(randomNumber);
-            System.out.println("현재 위치 : " + position.loadPositionObj()); // position 값 저장 에러
+
+            resultPrint(position.loadPositionObj());
+            System.out.println("");
+
+//            System.out.println("현재 위치 : " + position.loadPositionObj());
+        }
+    }
+
+    public static void resultPrint(int movePosition) {
+
+        for (int i = LOOP_START; i < movePosition; i++) {
+            System.out.print("-");
         }
     }
 
     public static void main(String[] args) {
         ready();
         start();
+//        result();
     }
 }
