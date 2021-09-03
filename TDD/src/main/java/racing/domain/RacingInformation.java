@@ -7,8 +7,8 @@ public class RacingInformation {
 
     private static List<Car> cars;
 
-    int carQuantity = 0;
-    int tryCount = 0;
+    int carQuantity;
+    int tryCount;
 
     public RacingInformation(int carQuantity, int tryCount) {
         this.carQuantity = carQuantity;
@@ -17,7 +17,6 @@ public class RacingInformation {
         createCar();
     }
 
-    // 자동차 대수 생성
     public List<Car> createCar() {
         cars = new ArrayList<>();
 

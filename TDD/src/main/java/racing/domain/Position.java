@@ -8,7 +8,7 @@ public class Position {
         this.position = position;
     }
 
-    public int loadPositionObj() {
+    public int loadPositionObject() {
         return this.position;
     }
 }
