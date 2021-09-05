@@ -61,14 +61,14 @@ public class RacingController {
 
     private List<Car> racingMove(List<Car> cars) { // 분리 필요
         randomGenerator = new RandomGenerator();
-        int randomNumber;
 
-        for (int i = LOOP_START; i < cars.size(); i++) {
-            randomNumber = randomGenerator.randomNumber();
-            position = cars.get(i).move(randomNumber);
-            resultPrint(position.loadPositionObject()); // ResultView로 분리 필요
+        for (Car car : cars) {
+            position = car.move(randomGenerator.randomNumber());
+            resultPrint(position.loadPositionObject());
             newLine();
         }
+        // ResultView로 분리 필요 -> car
+        // 경주를 끝낸 후 화면을 그려주는 역할
         return this.cars = cars;
     }
 
