@@ -15,13 +15,17 @@ public class InputView {
         scanner = new Scanner(System.in);
     }
 
+    private void printMessage(String message) {
+        System.out.println(message);
+    }
+
     public int setUpCarQuantity() {
-        System.out.println(INPUT_MESSAGE_CAR_QUANTITY);
+        printMessage(INPUT_MESSAGE_CAR_QUANTITY);
         return inputValidate();
     }
 
     public int setUpTryCount() {
-        System.out.println(INPUT_MESSAGE_TRY_COUNT);
+        printMessage(INPUT_MESSAGE_TRY_COUNT);
         return inputValidate();
     }
 
