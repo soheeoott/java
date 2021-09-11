@@ -1,13 +1,12 @@
 package racing.domain;
 
-public class Car { // 의존관계 (외부에 어떻게 영향을 끼칠지)
+public class Car {
 
     private static final String ERROR_MESSAGE_INPUT_MOVE_RANGE = "자동차를 움직일 수 있는 숫자의 범위는 1이상 9이하입니다.";
 
     private static final int MIN_RANGE = 0;
     private static final int MAX_RANGE= 9;
     private static final int FORWARD_REQUIREMENT_NUMBER = 4;
-    private static final int INCREASE = 1;
 
     private Position position;
 
@@ -33,8 +32,8 @@ public class Car { // 의존관계 (외부에 어떻게 영향을 끼칠지)
         }
 
         if (movedCondition(randomNumber)) {
-            loadPositionCurrent += INCREASE;
-            return position = new Position(loadPositionCurrent);
+            int newPosition = position.increasePosition();
+            return position = new Position(newPosition);
         }
         return position = new Position(loadPositionCurrent);
     }
